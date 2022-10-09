@@ -1,0 +1,2 @@
+# MyOwnRandomClass
+ A custom PRNG 
