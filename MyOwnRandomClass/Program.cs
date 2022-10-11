@@ -6,17 +6,16 @@ MyRandom random = new();
 List<int> intList = new List<int>();
 Stopwatch stopWatch = new();
 
-
 for (int i = 0; i < 100; i++)
 {
     int test = random.Next(1, 100);
     intList.Add(test);
     Console.WriteLine(test);
 }
-
-
-
 random.PrintNumberOccurrenceData(intList, 1, 100);
+
+
+
 
 class MyRandom
 {
@@ -44,7 +43,7 @@ class MyRandom
                 randomInt = low;
             }
         }
-        Thread.Sleep(1); // Change to StopWatch or use Async ?
+        Thread.Sleep(1); // Change to StopWatch or use Async to free up thread 
         return randomInt;
 
         //stopWatch.Start();
@@ -53,9 +52,6 @@ class MyRandom
         //}
         //stopWatch.Reset();
     }
-
-
-
     //private void SetStopWatchWait(int ms)
     //{
     //    Stopwatch stopwatch = Stopwatch.StartNew();
