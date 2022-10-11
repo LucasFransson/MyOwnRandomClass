@@ -1,14 +1,19 @@
 ﻿
+using System.Diagnostics;
+using System.Timers;
+
 MyRandom random = new();
 List<int> intList = new List<int>();
+Stopwatch stopWatch = new();
 
-for (int i = 0; i < 1000; i++)
+
+for (int i = 0; i < 10000; i++)
 {
     int test = random.Next(1, 100);
     intList.Add(test);
     Console.WriteLine(test);
-
 }
+
 
 
 random.PrintNumberOccurrenceData(intList, 1, 100);
@@ -17,33 +22,49 @@ class MyRandom
 {
     public int GetSeed()
     {
-        {
             return Environment.TickCount;
-        }
     }
 
     public int Next(int low, int high)
     {
-        int seedInt = GetSeed(); 
+        int seedInt = GetSeed();
         for (int i = 0; i < 3; i++)
         {
-            seedInt = seedInt* seedInt.ToString().Last() / NumberOfDigits(seedInt,0);
+            seedInt = seedInt * seedInt.ToString().Last() / NumberOfDigits(seedInt, 0);
         }
-        String randomSeedStringFull = seedInt.ToString(); 
-        int randomSeedInt = int.Parse(randomSeedStringFull.Substring(randomSeedStringFull.Length-NumberOfDigits(high,0)));
+        String randomSeedStringFull = seedInt.ToString();
+        int randomSeedInt = int.Parse(randomSeedStringFull.Substring(randomSeedStringFull.Length - NumberOfDigits(high, 0)));
 
-        int randomInt = low;  
+        int randomInt = low;
         for (int i = 0; i <= randomSeedInt; i++)
         {
-            randomInt++; 
-            if (randomInt == high) 
+            randomInt++;
+            if (randomInt > high)
             {
-                randomInt = low; 
+                randomInt = low;
             }
         }
-        Thread.Sleep(1); // byt ut till en timer 
-        return randomInt; 
+        Thread.Sleep(1);
+        return randomInt;
+        //stopWatch.Start();
+        //while (stopWatch.ElapsedMilliseconds < 10)
+        //{
+        //}
+        //stopWatch.Reset();
     }
+
+
+
+    //private void SetStopWatchWait(int ms)
+    //{
+    //    Stopwatch stopwatch = Stopwatch.StartNew();
+    //    while (stopwatch.ElapsedMilliseconds<ms)
+    //    {
+
+    //    }
+    //    stopwatch.Stop();
+    //}
+
 
     public void PrintNumberOccurrenceData(List<int> intList, int low, int high)
     {
@@ -51,7 +72,7 @@ class MyRandom
         List<int> noOccurredInts = new();
 
         Console.WriteLine($"Total amount of Numbers in list : {intList.Count()}");
-        for (int i = low; i < high; i++)
+        for (int i = low; i <=high; i++)
         {
             if (intList.Contains(i))
             {
@@ -77,9 +98,28 @@ class MyRandom
             }
         }
         Console.WriteLine("\r\n----------------------------");
+        PrintExtremesData(intList, low, high);
     }
 
-    public int NumberOfDigits(int number, int noDigits)
+    public void PrintExtremesData(List<int> intList, int low, int high)
+    {
+        int nrCounter=0; 
+        int currentHighestCounter=0;
+        int currentHighestNr = 0;
+        for (int i = low;i<=high;i++)
+        {
+            nrCounter = intList.FindAll(x => x == i).Count();
+            if (currentHighestCounter < nrCounter)
+            {
+                currentHighestCounter = nrCounter;
+                currentHighestNr = i;
+            }
+        }
+        Console.WriteLine($"The most common number was {currentHighestNr} which occured {intList.FindAll(x=>x==currentHighestNr).Count} Times.");
+
+    }
+
+    private int NumberOfDigits(int number, int noDigits)
     {
         if (number == 0)
         {
