@@ -46,20 +46,16 @@ class MyRandom
         Thread.Sleep(1); // Change to StopWatch or use Async to free up thread 
         return randomInt;
 
-        //stopWatch.Start();
-        //while (stopWatch.ElapsedMilliseconds < )
-        //{
-        //}
-        //stopWatch.Reset();
+
     }
-    //private void SetStopWatchWait(int ms)
+    //private void SetStopWatch(int ms)
     //{
     //    Stopwatch stopwatch = Stopwatch.StartNew();
     //    while (stopwatch.ElapsedMilliseconds<ms)
     //    {
 
     //    }
-    //    stopwatch.Stop();
+    //    stopwatch.Reset();
     //}
 
 
