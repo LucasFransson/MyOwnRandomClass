@@ -44,10 +44,11 @@ class MyRandom
                 randomInt = low;
             }
         }
-        Thread.Sleep(1);
+        Thread.Sleep(1); // Change to StopWatch or use Async ?
         return randomInt;
+
         //stopWatch.Start();
-        //while (stopWatch.ElapsedMilliseconds < 10)
+        //while (stopWatch.ElapsedMilliseconds < )
         //{
         //}
         //stopWatch.Reset();
