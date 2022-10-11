@@ -7,7 +7,7 @@ List<int> intList = new List<int>();
 Stopwatch stopWatch = new();
 
 
-for (int i = 0; i < 10000; i++)
+for (int i = 0; i < 100; i++)
 {
     int test = random.Next(1, 100);
     intList.Add(test);
