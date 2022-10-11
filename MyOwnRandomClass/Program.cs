@@ -19,7 +19,7 @@ random.PrintNumberOccurrenceData(intList, 1, 100);
 
 class MyRandom
 {
-    public int GetSeed()
+    private int GetSeed()
     {
             return Environment.TickCount;
     }
@@ -48,6 +48,7 @@ class MyRandom
 
 
     }
+
     //private void SetStopWatch(int ms)
     //{
     //    Stopwatch stopwatch = Stopwatch.StartNew();
@@ -94,7 +95,7 @@ class MyRandom
         PrintExtremesData(intList, low, high);
     }
 
-    public void PrintExtremesData(List<int> intList, int low, int high)
+    private void PrintExtremesData(List<int> intList, int low, int high)
     {
         int nrCounter=0; 
         int currentHighestCounter=0;
