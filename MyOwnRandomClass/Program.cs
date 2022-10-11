@@ -108,7 +108,7 @@ class MyRandom
                 currentHighestNr = i;
             }
         }
-        Console.WriteLine($"The most common number was {currentHighestNr} which occured {intList.FindAll(x=>x==currentHighestNr).Count} Times.");
+        Console.WriteLine($"The most commonly occured number was {currentHighestNr}, which occured {intList.FindAll(x=>x==currentHighestNr).Count} Times.");
 
     }
 
