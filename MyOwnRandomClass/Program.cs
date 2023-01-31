@@ -1,10 +1,11 @@
 ﻿
 using System.Diagnostics;
-using System.Timers;
+
+
 
 MyRandom random = new();
 List<int> intList = new List<int>();
-Stopwatch stopWatch = new();
+
 
 for (int i = 0; i < 100; i++)
 {
@@ -21,11 +22,21 @@ class MyRandom
 {
     private int GetSeed()
     {
-            return Environment.TickCount;
+        return Environment.TickCount;
+    }
+    private int GetLastDigitOfInteger(int seedInt)
+    {
+        return (seedInt % 10);
+        //string tempSeedString = seedInt.ToString();    // Parse the int to a string
+        //char lastChar = tempSeedString.LastOrDefault();    //Set char lastChar to the last char of the string .Iow Set "lastNumber" to the last "number" of the "Integer"
+        //return int.Parse(tempSeedString);    // Parse the string back to an int and return it's value
+
     }
 
     public int Next(int low, int high)
     {
+
+
         int seedInt = GetSeed();
         for (int i = 0; i < 3; i++)
         {
@@ -49,17 +60,6 @@ class MyRandom
 
     }
 
-    //private void SetStopWatch(int ms)
-    //{
-    //    Stopwatch stopwatch = Stopwatch.StartNew();
-    //    while (stopwatch.ElapsedMilliseconds<ms)
-    //    {
-
-    //    }
-    //    stopwatch.Reset();
-    //}
-
-
     public void PrintNumberOccurrenceData(List<int> intList, int low, int high)
     {
         int nrCounter;
@@ -70,6 +70,7 @@ class MyRandom
         {
             if (intList.Contains(i))
             {
+                
                 nrCounter = intList.FindAll(x => x == i).Count();
                 Console.WriteLine($"Number {i} Occurred : {nrCounter} Times");
             }
